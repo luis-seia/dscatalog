@@ -1,7 +1,6 @@
 package com.seiadev.dscatalog.resources;
 
 import com.seiadev.dscatalog.dto.CategoryDTO;
-import com.seiadev.dscatalog.entities.Category;
 import com.seiadev.dscatalog.services.CategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -12,8 +11,6 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import java.net.URI;
-import java.util.ArrayList;
-import java.util.List;
 
 @RestController
 @RequestMapping(value = "/categories")
@@ -37,8 +34,6 @@ public class CategoryResource {
 
     @GetMapping(value = "/{id}")
     public ResponseEntity<CategoryDTO> findByID(@PathVariable("id") Long id){
-
-
         CategoryDTO categoryDTO = service.findById(id);
         return ResponseEntity.ok().body(categoryDTO);
     }
