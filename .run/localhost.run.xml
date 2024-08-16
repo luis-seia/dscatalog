@@ -1,0 +1,9 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="localhost" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+    <module name="dscatalog" />
+    <option name="SPRING_BOOT_MAIN_CLASS" value="com.seiadev.dscatalog.DscatalogApplication" />
+    <method v="2">
+      <option name="Make" enabled="true" />
+    </method>
+  </configuration>
+</component>
