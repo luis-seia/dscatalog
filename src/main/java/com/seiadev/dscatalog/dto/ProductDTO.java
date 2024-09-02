@@ -2,6 +2,11 @@ package com.seiadev.dscatalog.dto;
 
 import com.seiadev.dscatalog.entities.Product;
 import com.seiadev.dscatalog.entities.Category;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.PastOrPresent;
+import jakarta.validation.constraints.Positive;
+import jakarta.validation.constraints.Size;
+
 import java.util.Set;
 import java.time.Instant;
 import java.util.ArrayList;
@@ -10,10 +15,17 @@ import java.util.List;
 public class ProductDTO {
     private static final long serialVersionUID = 1L;
     private Long id;
+
+    @Size(min = 5, max = 60, message = "Deve ter entre 5 e 60 caracters")
+    @NotBlank(message = "Campo requerido")
     private String name;
     private String description;
+
+    @Positive(message = "O preco deve ser positivo")
     private Double price;
     private String imgUrl;
+
+    @PastOrPresent(message = "A data do produto nao pode ser futuro")
     private Instant date;
     private List<CategoryDTO> categories = new ArrayList<CategoryDTO>();
 

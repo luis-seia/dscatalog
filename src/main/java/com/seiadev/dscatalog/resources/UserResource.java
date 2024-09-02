@@ -3,6 +3,7 @@ package com.seiadev.dscatalog.resources;
 import com.seiadev.dscatalog.dto.UserDTO;
 import com.seiadev.dscatalog.dto.UserInsertDTO;
 import com.seiadev.dscatalog.services.UserService;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -37,14 +38,14 @@ public class UserResource {
     }
 
     @PostMapping
-    public ResponseEntity<UserDTO> create(@RequestBody UserInsertDTO userInsertDTO) {
+    public ResponseEntity<UserDTO> create(@Valid @RequestBody UserInsertDTO userInsertDTO) {
         UserDTO userDTO = userService.insert(userInsertDTO);
         URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(userDTO.getId()).toUri();
         return ResponseEntity.created(uri).body(userDTO);
     }
 
     @PostMapping(value = "/{id}")
-    public ResponseEntity<UserDTO> update(@PathVariable Long id, @RequestBody UserDTO userDTO) {
+    public ResponseEntity<UserDTO> update(@PathVariable Long id,@Valid @RequestBody UserDTO userDTO) {
         userDTO = userService.update(id, userDTO);
         return ResponseEntity.ok(userDTO);
     }
